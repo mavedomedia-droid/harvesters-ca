@@ -223,9 +223,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 15px;
     color: var(--text);
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* allow wrapping instead of ellipsis to show full location */
+    white-space: normal;
+    word-break: break-word;
   }
 
   /* ---------- About section ---------- */
@@ -928,10 +928,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============ Page ============ -->
 <div class="page">
 
-  <!-- Banner -->
-  <div class="banner" role="img" aria-label="Next Level Prayers Conference banner">
-    <span aria-hidden="true">Banner · banner.jpg</span>
-    <img src="banner.jpg" alt="" onerror="this.remove()">
+  <!-- Banner - simplified, no redundant role or placeholder -->
+  <div class="banner">
+    <img src="banner.jpg" alt="Next Level Prayers Conference banner" onerror="this.remove()">
   </div>
 
   <div class="grid">
@@ -988,7 +987,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="info-body">
             <div class="info-label">Location</div>
-            <div class="info-value">The Internatio…</div>
+            <div class="info-value">The International Centre, Mississauga, Ontario</div>
           </div>
         </div>
       </div>
@@ -1150,7 +1149,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="modal-field">
             <label for="mTeam">What team would you like to serve? <span class="opt">(optional)</span></label>
-            <select id="mTeam" name="team">
+            <select id="mTeam" name="team" autocomplete="off">
               <option value="" selected>I'd rather not say</option>
               <option>Guest Services (Ushers/Greeters/Infodesk/Check-ins)</option>
               <option>Graphic Design/Illustration</option>
@@ -1187,7 +1186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="modal-field shuttle-city" id="shuttleCityField" hidden style="margin-top:14px;">
             <label for="mShuttle">Pick your closest city</label>
-            <select id="mShuttle" name="shuttle">
+            <select id="mShuttle" name="shuttle" autocomplete="off">
               <option value="" disabled selected>Select your pickup city</option>
               <option>Hamilton</option>
               <option>Waterloo/Kitchener/Cambridge Corridor</option>
@@ -1261,7 +1260,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="lbl">Tickets</span>
     <span class="val">Free</span>
   </div>
-  <a href="#" class="btn-primary" id="ticketBtnMobile">
+  <!-- changed href to javascript:void(0) to prevent page jump -->
+  <a href="javascript:void(0)" class="btn-primary" id="ticketBtnMobile">
     <span>Get Your Tickets</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <line x1="5" y1="12" x2="19" y2="12"/>
@@ -1296,10 +1296,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.setAttribute('hidden', '');
     document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    // Reset to form view after the modal is out of sight
-    setTimeout(function () {
-      if (typeof resetModal === 'function') resetModal();
-    }, 250);
+    // Reset synchronously to avoid stale success view being shown on re‑open
+    resetModal();
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -1441,7 +1439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          3. Swap the modal to the success view
        Replace the BACKEND_ENDPOINT + fetch stub below with your real endpoint.
     */
-    var BACKEND_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/AKfycbxC3LAlJr90PEzbK8JPdrplwZEbeKkWYvsa-uNoakAqjTN_UW_8FhO73yuKBRdczcVdtw/exec'
+    var BACKEND_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/...'
 
     function completeSuccess() {
       // 2. GTM dataLayer push — configure GTM trigger on event: 'ticket_reserved'
@@ -1464,12 +1462,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       console.error('[NLP Canada 2026 · submit failed]', err);
       submitBtn.disabled = false;
       submitLbl.textContent = 'Try again';
-      // You could also surface an inline error banner here.
     }
 
     if (BACKEND_ENDPOINT) {
-      // 1. Real POST — no-cors is used because GAS webhooks don't send CORS headers.
-      //    You won't be able to read the response body, but the write still happens.
       fetch(BACKEND_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
@@ -1479,7 +1474,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .then(completeSuccess)
         .catch(completeFailure);
     } else {
-      // Stub while endpoint isn't wired — logs the payload, then shows success.
+      // Stub while endpoint isn't wired
       console.log('[NLP Canada 2026 · Modal] Payload:', payload);
       setTimeout(completeSuccess, 500);
     }
@@ -1500,7 +1495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function resetModal() {
     var f = document.getElementById('modalForm');
     var s = document.getElementById('successView');
-    if (!f.hidden && !s.hidden) return; // nothing to reset
+    if (!f.hidden && !s.hidden) return; // nothing to reset (both visible shouldn't happen)
     f.hidden = false;
     s.hidden = true;
     document.getElementById('modalTitle').textContent = 'Get Tickets';
@@ -1516,23 +1511,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ---------- Success actions ---------- */
-  // Add to calendar — generates a .ics file and triggers download
+  // Add to calendar — generates a .ics file (now referencing Next Level Prayers)
   document.getElementById('calendarBtn').addEventListener('click', function () {
     // Event is 4:00 PM ET (UTC-4 in July) → 20:00 UTC. 6-hour block.
     var ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Harvesters//NLP Canada 2026//EN',
+      'PRODID:-//Next Level Prayers//NLP Canada 2026//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
-      'UID:nlp-canada-2026@harvestersng.org',
+      'UID:nlp-canada-2026@nextlevelprayers.org',
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]|\.\d{3}/g, ''),
       'DTSTART:20260718T200000Z',
       'DTEND:20260719T020000Z',
       'SUMMARY:Next Level Prayers Conference Canada 2026',
       'LOCATION:The International Centre\\, Mississauga\\, Ontario',
-      'DESCRIPTION:A worship\\, prayer and miracles conference by Harvesters International Christian Centre.',
+      'DESCRIPTION:A worship\\, prayer and miracles conference by Next Level Prayers.',
       'END:VEVENT',
       'END:VCALENDAR'
     ].join('\r\n');
