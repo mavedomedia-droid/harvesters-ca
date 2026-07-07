@@ -181,7 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .event-loc svg { flex-shrink: 0; }
 
-  /* ---------- Info cards row (Date / Time / Location) ---------- */
+  /* ---------- Info cards row ---------- */
   .info-row {
     display: grid;
     grid-template-columns: 1fr;
@@ -223,8 +223,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 15px;
     color: var(--text);
     font-weight: 700;
-    /* allow wrapping instead of ellipsis */
-    white-space: normal;
+    white-space: normal;      /* allow full location to wrap */
     word-break: break-word;
   }
 
@@ -402,7 +401,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--green-icon);
   }
 
-  /* Focus rings on links */
   a:focus-visible {
     outline: 2px solid var(--orange);
     outline-offset: 3px;
@@ -667,7 +665,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-left: 2px;
   }
 
-  /* Fieldset legend (radio group heading) */
   .field-legend {
     font-size: 13px;
     color: var(--text);
@@ -679,7 +676,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .field-legend .req { color: var(--orange); }
 
-  /* Yes / No choice pills */
   .choice-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -733,7 +729,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .modal-field.has-error .choice { border-color: #B0341F; }
 
-  /* City reveal */
   .shuttle-city {
     animation: revealDown 220ms ease-out;
   }
@@ -745,7 +740,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .shuttle-city { animation: none; }
   }
 
-  /* Modal footer */
   .modal-footer {
     border-top: 1px solid var(--border);
     padding: 16px 24px 20px;
@@ -809,6 +803,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  /* 🔧 Fix: override display:flex when hidden attribute is present */
+  .success-view[hidden] {
+    display: none !important;
   }
   .success-icon {
     width: 72px;
@@ -929,7 +927,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="grid">
     <main>
-
       <span class="event-tag">Jul 18, 2026 • 16:00</span>
       <h1 class="event-title">Next Level Prayers Conference Canada</h1>
       <span class="event-loc">
@@ -987,23 +984,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 id="aboutHeading">About this event</h2>
         <p>The Next Level Prayers (NLP) Conference Toronto, Canada 2026 is a powerful gathering designed to ignite spiritual transformation and unlock divine breakthroughs.</p>
         <p><strong>Venue:</strong> The International Center, Toronto</p>
-
         <h3>Registration Details</h3>
         <p>Please register to attend and stay updated as event information unfolds. There are two registration options:</p>
         <ul>
           <li><strong>Attend Only</strong> — Single or Group Ticket</li>
           <li><strong>Attend &amp; Volunteer</strong> — Single or Group Ticket (for those who wish to serve while attending)</li>
         </ul>
-
         <h3>Important Notes</h3>
         <p>This is an RSVP-only event — registration indicates your intent to attend.</p>
         <p>Expect follow-up communications via email, SMS, and phone.</p>
       </section>
-
     </main>
 
     <aside class="sidebar" aria-label="Ticket and organizer information">
-
       <div class="side-card">
         <div class="tickets-label">Tickets starting at</div>
         <div class="tickets-price">Free</div>
@@ -1060,9 +1053,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
     </aside>
-
   </div>
 </div>
 
@@ -1083,7 +1074,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <form id="modalForm" novalidate style="display:flex; flex-direction:column; overflow:hidden; flex:1;">
       <div class="modal-body">
-
         <section>
           <span class="section-title">Select tickets</span>
           <div class="ticket-item">
@@ -1134,7 +1124,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section>
           <span class="section-title">Additional Information</span>
-
           <div class="modal-field">
             <label for="mTeam">What team would you like to serve? <span class="opt">(optional)</span></label>
             <select id="mTeam" name="team" autocomplete="off">
@@ -1191,7 +1180,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="error">Pick your closest city</span>
           </div>
         </section>
-
       </div>
 
       <div class="modal-footer">
@@ -1218,13 +1206,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h3 class="success-title">You're on the list.</h3>
       <p class="success-sub">We've sent your confirmation to <strong id="successEmail">your email</strong>. Look out for a follow-up as we get closer to the day.</p>
-
       <div class="success-details">
         <div class="success-detail-row"><span class="lbl">Tickets</span><span class="val" id="successQty">1 × Attend</span></div>
         <div class="success-detail-row"><span class="lbl">Date</span><span class="val">Jul 18, 2026 · 4:00 PM</span></div>
         <div class="success-detail-row"><span class="lbl">Venue</span><span class="val">The International Centre, Mississauga</span></div>
       </div>
-
       <div class="success-actions">
         <button type="button" class="btn-secondary" id="calendarBtn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1259,15 +1245,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   'use strict';
 
-  var OFFICIAL_GUESTLINK_URL = 'https://guestlink.example.com/nlp-canada-2026'; // TODO: replace
+  var OFFICIAL_GUESTLINK_URL = 'https://guestlink.example.com/nlp-canada-2026';
 
-  /* ---------- Modal open / close ---------- */
   var modal      = document.getElementById('ticketModal');
   var modalClose = document.getElementById('modalClose');
   var lastFocused = null;
 
   function openModal() {
-    // ALWAYS reset to the form view before opening, so we never see the stale success view
+    // Force reset to form view every time the modal opens
     resetModal();
     lastFocused = document.activeElement;
     modal.removeAttribute('hidden');
@@ -1283,7 +1268,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.setAttribute('hidden', '');
     document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    resetModal(); // still call synchronously, but openModal already handles it
+    // Reset again to be safe (openModal already does it, but this ensures clean state after close)
+    resetModal();
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -1294,7 +1280,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
 
-  /* ---------- CTA buttons open the modal ---------- */
   function handleTicketClick(e) {
     e.preventDefault();
     openModal();
@@ -1304,7 +1289,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if (btn)       btn.addEventListener('click', handleTicketClick);
   if (btnMobile) btnMobile.addEventListener('click', handleTicketClick);
 
-  /* ---------- Quantity stepper ---------- */
   var qty        = 1;
   var qtyMin     = 1;
   var qtyMax     = 10;
@@ -1325,7 +1309,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   qtyPlusEl .addEventListener('click', function () { if (qty < qtyMax) { qty++; updateQty(); } });
   updateQty();
 
-  /* ---------- Shuttle Yes/No + city reveal ---------- */
   var shuttleRadios    = document.querySelectorAll('input[name="shuttleChoice"]');
   var shuttleFs        = document.querySelector('.shuttle-fs');
   var shuttleCityField = document.getElementById('shuttleCityField');
@@ -1333,12 +1316,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   shuttleRadios.forEach(function (r) {
     r.addEventListener('change', function () {
-      document.querySelectorAll('.choice').forEach(function (c) {
-        c.classList.remove('is-checked');
-      });
+      document.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('is-checked'); });
       r.closest('.choice').classList.add('is-checked');
       if (shuttleFs) shuttleFs.classList.remove('has-error');
-
       if (r.value === 'yes') {
         shuttleCityField.hidden = false;
       } else {
@@ -1349,12 +1329,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  /* ---------- Submit ---------- */
   var form = document.getElementById('modalForm');
 
-  function isValidEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
-  }
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1373,27 +1350,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var fieldEl = el.closest('.modal-field');
       var isValid = c.valid(el.value);
       fieldEl.classList.toggle('has-error', !isValid);
-      if (!isValid) {
-        ok = false;
-        if (!firstInvalid) firstInvalid = el;
-      }
+      if (!isValid) { ok = false; if (!firstInvalid) firstInvalid = el; }
     });
 
     var shuttleChecked = form.querySelector('input[name="shuttleChoice"]:checked');
     if (!shuttleChecked) {
       if (shuttleFs) shuttleFs.classList.add('has-error');
-      ok = false;
-      if (!firstInvalid) firstInvalid = shuttleRadios[0];
+      ok = false; if (!firstInvalid) firstInvalid = shuttleRadios[0];
     } else if (shuttleChecked.value === 'yes' && !mShuttle.value) {
       shuttleCityField.classList.add('has-error');
-      ok = false;
-      if (!firstInvalid) firstInvalid = mShuttle;
+      ok = false; if (!firstInvalid) firstInvalid = mShuttle;
     }
 
-    if (!ok) {
-      if (firstInvalid) firstInvalid.focus();
-      return;
-    }
+    if (!ok) { if (firstInvalid) firstInvalid.focus(); return; }
 
     var wantsShuttle = shuttleChecked.value === 'yes';
     var payload = {
@@ -1412,7 +1381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitBtn.disabled = true;
     submitLbl.textContent = 'Processing…';
 
-    var BACKEND_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/...'
+    var BACKEND_ENDPOINT = '';
 
     function completeSuccess() {
       window.dataLayer = window.dataLayer || [];
@@ -1435,21 +1404,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     if (BACKEND_ENDPOINT) {
-      fetch(BACKEND_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-        .then(completeSuccess)
-        .catch(completeFailure);
+      fetch(BACKEND_ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(completeSuccess).catch(completeFailure);
     } else {
       console.log('[NLP Canada 2026 · Modal] Payload:', payload);
       setTimeout(completeSuccess, 500);
     }
   });
 
-  /* ---------- Success view swap ---------- */
   function showSuccess(payload) {
     document.getElementById('modalForm').hidden = true;
     document.getElementById('successView').hidden = false;
@@ -1464,7 +1426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function resetModal() {
     var f = document.getElementById('modalForm');
     var s = document.getElementById('successView');
-    // guard against both being hidden (nothing to do)
+    // Only reset if we are not already in form state (both hidden? that shouldn't happen)
     if (f.hidden && s.hidden) return;
     f.hidden = false;
     s.hidden = true;
@@ -1480,7 +1442,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (submitBtn) submitBtn.disabled = false;
   }
 
-  /* ---------- Success actions ---------- */
   document.getElementById('calendarBtn').addEventListener('click', function () {
     var ics = [
       'BEGIN:VCALENDAR',
@@ -1499,7 +1460,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       'END:VEVENT',
       'END:VCALENDAR'
     ].join('\r\n');
-
     var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -1513,7 +1473,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.getElementById('doneBtn').addEventListener('click', closeModal);
 
-  // Clear inline errors as the user fixes them
   form.querySelectorAll('input, select').forEach(function (el) {
     var clear = function () {
       var f = el.closest('.modal-field');
@@ -1522,9 +1481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     el.addEventListener('input',  clear);
     el.addEventListener('change', clear);
   });
-
 })();
 </script>
-
 </body>
 </html>
