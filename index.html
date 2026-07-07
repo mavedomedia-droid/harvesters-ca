@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W5VH53KB');</script>
+<!-- End Google Tag Manager -->
+
 <title>Next Level Prayers Conference Canada — Jul 18, 2026 · Mississauga</title>
 <meta name="description" content="Next Level Prayers Conference Canada 2026. A powerful gathering of prayer, worship and divine encounters. Jul 18, 2026 at The International Centre, Mississauga, Ontario. Free RSVP.">
 <meta name="theme-color" content="#FF5A1F">
@@ -793,9 +802,115 @@
 
   body.modal-open { overflow: hidden; }
   body.modal-open .mobile-cta { display: none; }
+
+  /* ---------- Success view ---------- */
+  .success-view {
+    padding: 36px 24px 28px;
+    text-align: center;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #E8F7EE;
+    color: var(--green-icon-dark);
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    animation: successPop 460ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes successPop {
+    from { transform: scale(0.4); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .success-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+  .success-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 24px;
+    max-width: 420px;
+    line-height: 1.55;
+  }
+  .success-sub strong { color: var(--text); font-weight: 600; }
+  .success-details {
+    background: var(--page-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .success-detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  .success-detail-row + .success-detail-row {
+    border-top: 1px solid var(--border);
+  }
+  .success-detail-row .lbl { color: var(--muted); }
+  .success-detail-row .val {
+    color: var(--text);
+    font-weight: 600;
+    text-align: right;
+  }
+  .success-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .success-actions > * { flex: 1; }
+  .btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    padding: 14px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 160ms, border-color 160ms;
+    font-family: inherit;
+  }
+  .btn-secondary:hover {
+    background: var(--page-bg);
+    border-color: var(--muted-2);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .success-icon { animation: none; }
+  }
+  @media (max-width: 420px) {
+    .success-actions { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5VH53KB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- ============ Top nav ============ -->
 <nav class="topnav" aria-label="Primary">
@@ -1107,6 +1222,36 @@
         <p class="footer-note">Tickets are non-refundable. You'll receive a confirmation email.</p>
       </div>
     </form>
+
+    <!-- Success view (swaps in after successful submit) -->
+    <div class="success-view" id="successView" hidden role="status" aria-live="polite">
+      <div class="success-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h3 class="success-title">You're on the list.</h3>
+      <p class="success-sub">We've sent your confirmation to <strong id="successEmail">your email</strong>. Look out for a follow-up as we get closer to the day.</p>
+
+      <div class="success-details">
+        <div class="success-detail-row"><span class="lbl">Tickets</span><span class="val" id="successQty">1 × Attend</span></div>
+        <div class="success-detail-row"><span class="lbl">Date</span><span class="val">Jul 18, 2026 · 4:00 PM</span></div>
+        <div class="success-detail-row"><span class="lbl">Venue</span><span class="val">The International Centre, Mississauga</span></div>
+      </div>
+
+      <div class="success-actions">
+        <button type="button" class="btn-secondary" id="calendarBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Add to Calendar
+        </button>
+        <button type="button" class="btn-primary" id="doneBtn">Done</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1151,6 +1296,10 @@
     modal.setAttribute('hidden', '');
     document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    // Reset to form view after the modal is out of sight
+    setTimeout(function () {
+      if (typeof resetModal === 'function') resetModal();
+    }, 250);
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -1285,16 +1434,121 @@
     submitBtn.disabled = true;
     submitLbl.textContent = 'Processing…';
 
-    // Replace this block with your real submit (fetch to backend, or GuestLink redirect):
-    console.log('[NLP Canada 2026 · Modal] Payload:', payload);
-    setTimeout(function () {
-      // window.location.href = OFFICIAL_GUESTLINK_URL;
-      alert('Reservation received. Wire this up to your backend or GuestLink URL.');
+    /* ============ COMPLETION TRIGGER ============
+       Three things fire on a successful submit:
+         1. POST to your backend  (Google Apps Script webhook or whatever)
+         2. Fire an analytics / pixel event  (Meta, GA, etc)
+         3. Swap the modal to the success view
+       Replace the BACKEND_ENDPOINT + fetch stub below with your real endpoint.
+    */
+    var BACKEND_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/XXXX/exec'
+
+    function completeSuccess() {
+      // 2. GTM dataLayer push — configure GTM trigger on event: 'ticket_reserved'
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'ticket_reserved',
+        event_id: 'nlp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+        ticket_qty: payload.qty,
+        shuttle_wanted: payload.shuttleWanted,
+        shuttle_city: payload.shuttlePickupCity || null,
+        value: 0,
+        currency: 'CAD'
+      });
+
+      // 3. Swap modal to success view
+      showSuccess(payload);
+    }
+
+    function completeFailure(err) {
+      console.error('[NLP Canada 2026 · submit failed]', err);
       submitBtn.disabled = false;
-      updateQty();
-      closeModal();
-    }, 500);
+      submitLbl.textContent = 'Try again';
+      // You could also surface an inline error banner here.
+    }
+
+    if (BACKEND_ENDPOINT) {
+      // 1. Real POST — no-cors is used because GAS webhooks don't send CORS headers.
+      //    You won't be able to read the response body, but the write still happens.
+      fetch(BACKEND_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(completeSuccess)
+        .catch(completeFailure);
+    } else {
+      // Stub while endpoint isn't wired — logs the payload, then shows success.
+      console.log('[NLP Canada 2026 · Modal] Payload:', payload);
+      setTimeout(completeSuccess, 500);
+    }
   });
+
+  /* ---------- Success view swap ---------- */
+  function showSuccess(payload) {
+    document.getElementById('modalForm').hidden = true;
+    document.getElementById('successView').hidden = false;
+    document.getElementById('successEmail').textContent = payload.email;
+    document.getElementById('successQty').textContent   = payload.qty + ' × Attend';
+    document.getElementById('modalTitle').textContent   = "You're all set";
+    var subt = document.querySelector('.modal-header .subt');
+    if (subt) subt.textContent = 'Confirmation sent';
+    document.querySelector('.modal-body') && document.querySelector('.modal-body').scrollTo(0, 0);
+  }
+
+  function resetModal() {
+    var f = document.getElementById('modalForm');
+    var s = document.getElementById('successView');
+    if (!f.hidden && !s.hidden) return; // nothing to reset
+    f.hidden = false;
+    s.hidden = true;
+    document.getElementById('modalTitle').textContent = 'Get Tickets';
+    var subt = document.querySelector('.modal-header .subt');
+    if (subt) subt.textContent = 'Next Level Prayers Conference Canada';
+    f.reset();
+    qty = 1;
+    updateQty();
+    document.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('is-checked'); });
+    shuttleCityField.hidden = true;
+    var submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = false;
+  }
+
+  /* ---------- Success actions ---------- */
+  // Add to calendar — generates a .ics file and triggers download
+  document.getElementById('calendarBtn').addEventListener('click', function () {
+    // Event is 4:00 PM ET (UTC-4 in July) → 20:00 UTC. 6-hour block.
+    var ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Harvesters//NLP Canada 2026//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:nlp-canada-2026@harvestersng.org',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]|\.\d{3}/g, ''),
+      'DTSTART:20260718T200000Z',
+      'DTEND:20260719T020000Z',
+      'SUMMARY:Next Level Prayers Conference Canada 2026',
+      'LOCATION:The International Centre\\, Mississauga\\, Ontario',
+      'DESCRIPTION:A worship\\, prayer and miracles conference by Harvesters International Christian Centre.',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'next-level-prayers-canada-2026.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 200);
+  });
+
+  document.getElementById('doneBtn').addEventListener('click', closeModal);
 
   // Clear inline errors as the user fixes them
   form.querySelectorAll('input, select').forEach(function (el) {
