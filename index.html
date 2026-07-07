@@ -223,7 +223,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 15px;
     color: var(--text);
     font-weight: 700;
-    /* allow wrapping instead of ellipsis to show full location */
+    /* allow wrapping instead of ellipsis */
     white-space: normal;
     word-break: break-word;
   }
@@ -455,11 +455,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding: 14px 18px;
     font-size: 15px;
   }
-  /* Hide on desktop — sidebar sticky handles it there */
   @media (min-width: 960px) {
     .mobile-cta { display: none; }
   }
-  /* Push page content up so the bar doesn't cover the footer / last panel */
   @media (max-width: 959px) {
     body { padding-bottom: 84px; }
   }
@@ -788,7 +786,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 10px 0 0;
   }
 
-  /* Mobile bottom-sheet treatment */
   @media (max-width: 559px) {
     .modal-overlay {
       align-items: flex-end;
@@ -912,7 +909,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- ============ Top nav ============ -->
 <nav class="topnav" aria-label="Primary">
   <div class="topnav-inner">
     <a href="#" class="logo" aria-label="GuestLink Home">
@@ -925,17 +921,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
-<!-- ============ Page ============ -->
 <div class="page">
 
-  <!-- Banner - simplified, no redundant role or placeholder -->
   <div class="banner">
     <img src="banner.jpg" alt="Next Level Prayers Conference banner" onerror="this.remove()">
   </div>
 
   <div class="grid">
-
-    <!-- ================= Main column ================= -->
     <main>
 
       <span class="event-tag">Jul 18, 2026 • 16:00</span>
@@ -948,7 +940,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         The International Centre Mississauga Ontario
       </span>
 
-      <!-- Info cards row -->
       <div class="info-row" role="list">
         <div class="info-card" role="listitem">
           <div class="info-icon" aria-hidden="true">
@@ -992,10 +983,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- About panel -->
       <section class="panel about" aria-labelledby="aboutHeading">
         <h2 id="aboutHeading">About this event</h2>
-
         <p>The Next Level Prayers (NLP) Conference Toronto, Canada 2026 is a powerful gathering designed to ignite spiritual transformation and unlock divine breakthroughs.</p>
         <p><strong>Venue:</strong> The International Center, Toronto</p>
 
@@ -1013,7 +1002,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </main>
 
-    <!-- ================= Sidebar ================= -->
     <aside class="sidebar" aria-label="Ticket and organizer information">
 
       <div class="side-card">
@@ -1222,7 +1210,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </form>
 
-    <!-- Success view (swaps in after successful submit) -->
     <div class="success-view" id="successView" hidden role="status" aria-live="polite">
       <div class="success-icon">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1254,13 +1241,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- ============ Mobile sticky CTA bar ============ -->
 <div class="mobile-cta" role="region" aria-label="Reserve tickets">
   <div class="mobile-cta-price">
     <span class="lbl">Tickets</span>
     <span class="val">Free</span>
   </div>
-  <!-- changed href to javascript:void(0) to prevent page jump -->
   <a href="javascript:void(0)" class="btn-primary" id="ticketBtnMobile">
     <span>Get Your Tickets</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1282,6 +1267,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var lastFocused = null;
 
   function openModal() {
+    // ALWAYS reset to the form view before opening, so we never see the stale success view
+    resetModal();
     lastFocused = document.activeElement;
     modal.removeAttribute('hidden');
     modal.classList.add('is-open');
@@ -1296,8 +1283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.setAttribute('hidden', '');
     document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    // Reset synchronously to avoid stale success view being shown on re‑open
-    resetModal();
+    resetModal(); // still call synchronously, but openModal already handles it
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -1347,16 +1333,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   shuttleRadios.forEach(function (r) {
     r.addEventListener('change', function () {
-      // Visual state
       document.querySelectorAll('.choice').forEach(function (c) {
         c.classList.remove('is-checked');
       });
       r.closest('.choice').classList.add('is-checked');
-
-      // Clear error on fieldset
       if (shuttleFs) shuttleFs.classList.remove('has-error');
 
-      // Reveal or hide city dropdown
       if (r.value === 'yes') {
         shuttleCityField.hidden = false;
       } else {
@@ -1397,14 +1379,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     });
 
-    // Shuttle choice — required
     var shuttleChecked = form.querySelector('input[name="shuttleChoice"]:checked');
     if (!shuttleChecked) {
       if (shuttleFs) shuttleFs.classList.add('has-error');
       ok = false;
       if (!firstInvalid) firstInvalid = shuttleRadios[0];
     } else if (shuttleChecked.value === 'yes' && !mShuttle.value) {
-      // If they said yes, they must pick a city
       shuttleCityField.classList.add('has-error');
       ok = false;
       if (!firstInvalid) firstInvalid = mShuttle;
@@ -1432,17 +1412,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitBtn.disabled = true;
     submitLbl.textContent = 'Processing…';
 
-    /* ============ COMPLETION TRIGGER ============
-       Three things fire on a successful submit:
-         1. POST to your backend  (Google Apps Script webhook or whatever)
-         2. Fire an analytics / pixel event  (Meta, GA, etc)
-         3. Swap the modal to the success view
-       Replace the BACKEND_ENDPOINT + fetch stub below with your real endpoint.
-    */
     var BACKEND_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/...'
 
     function completeSuccess() {
-      // 2. GTM dataLayer push — configure GTM trigger on event: 'ticket_reserved'
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'ticket_reserved',
@@ -1453,8 +1425,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         value: 0,
         currency: 'CAD'
       });
-
-      // 3. Swap modal to success view
       showSuccess(payload);
     }
 
@@ -1474,7 +1444,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .then(completeSuccess)
         .catch(completeFailure);
     } else {
-      // Stub while endpoint isn't wired
       console.log('[NLP Canada 2026 · Modal] Payload:', payload);
       setTimeout(completeSuccess, 500);
     }
@@ -1495,7 +1464,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function resetModal() {
     var f = document.getElementById('modalForm');
     var s = document.getElementById('successView');
-    if (!f.hidden && !s.hidden) return; // nothing to reset (both visible shouldn't happen)
+    // guard against both being hidden (nothing to do)
+    if (f.hidden && s.hidden) return;
     f.hidden = false;
     s.hidden = true;
     document.getElementById('modalTitle').textContent = 'Get Tickets';
@@ -1511,9 +1481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ---------- Success actions ---------- */
-  // Add to calendar — generates a .ics file (now referencing Next Level Prayers)
   document.getElementById('calendarBtn').addEventListener('click', function () {
-    // Event is 4:00 PM ET (UTC-4 in July) → 20:00 UTC. 6-hour block.
     var ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
