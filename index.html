@@ -38,16 +38,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --green-icon-dark: #15803D;
     --green-avatar: #1F9D55;
 
-    --radius: 14px;
-    --radius-lg: 18px;
+    --radius: 12px;
+    --radius-lg: 16px;
     --radius-pill: 999px;
     --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
-    --shadow-card-hover: 0 4px 12px rgba(15, 23, 42, 0.06);
     --shadow-button: 0 4px 14px rgba(255, 90, 31, 0.28);
 
     --max: 1240px;
-    --pad-x: clamp(16px, 4vw, 40px);
-    --gap: clamp(20px, 3vw, 32px);
+    --pad-x: clamp(16px, 4vw, 32px);       /* slightly smaller max padding */
+    --gap: clamp(16px, 2.5vw, 24px);
   }
 
   * { box-sizing: border-box; }
@@ -57,8 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--page-bg);
     color: var(--text-body);
     font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15px;                       /* slightly smaller base */
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -76,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .topnav-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 14px var(--pad-x);
+    padding: 12px var(--pad-x);            /* smaller */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,30 +84,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text);
   }
   .logo-mark {
-    width: 30px; height: 30px;
+    width: 28px; height: 28px;
     background: var(--orange);
-    border-radius: 8px;
+    border-radius: 7px;
     display: grid; place-items: center;
     color: #fff;
     font-weight: 800;
-    font-size: 15px;
-  }
-  .topnav-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+    font-size: 14px;
   }
   .btn-ghost {
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: var(--radius-pill);
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     transition: color 160ms, background 160ms;
   }
@@ -118,7 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .page {
     max-width: var(--max);
     margin: 0 auto;
-    padding: clamp(20px, 3vw, 32px) var(--pad-x) 80px;
+    padding: clamp(16px, 2.5vw, 24px) var(--pad-x) 64px;  /* less top padding */
   }
 
   /* ---------- Banner ---------- */
@@ -126,16 +120,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: #EEF0F3;
-    aspect-ratio: 21 / 8;
-    margin-bottom: 28px;
+    aspect-ratio: 21 / 10;               /* slightly shorter banner → more room for content */
+    margin-bottom: 20px;
     box-shadow: var(--shadow-card);
     display: grid;
     place-items: center;
-    color: var(--muted-2);
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
   }
   .banner img {
     width: 100%; height: 100%;
@@ -150,43 +139,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: var(--gap);
   }
   @media (min-width: 960px) {
-    .grid { grid-template-columns: minmax(0, 1fr) 380px; }
+    .grid { grid-template-columns: minmax(0, 1fr) 340px; }  /* slightly narrower sidebar */
   }
 
   /* ---------- Event header ---------- */
   .event-tag {
     display: inline-block;
     color: var(--orange);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .event-title {
-    font-size: clamp(28px, 4.4vw, 44px);
-    line-height: 1.1;
+    font-size: clamp(26px, 4vw, 36px);   /* smaller max */
+    line-height: 1.15;
     color: var(--text);
     letter-spacing: -0.025em;
     font-weight: 800;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .event-loc {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: var(--muted);
-    font-size: 15px;
-    margin-bottom: 28px;
+    font-size: 14px;
+    margin-bottom: 20px;
   }
-  .event-loc svg { flex-shrink: 0; }
+  .event-loc svg { width: 14px; height: 14px; flex-shrink: 0; }
 
   /* ---------- Info cards row ---------- */
   .info-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 32px;
+    gap: 10px;
+    margin-bottom: 24px;
   }
   @media (min-width: 560px) {
     .info-row { grid-template-columns: repeat(3, 1fr); }
@@ -195,35 +184,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 14px 16px;
+    padding: 10px 12px;                  /* smaller padding */
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     box-shadow: var(--shadow-card);
     min-width: 0;
   }
   .info-icon {
-    width: 40px; height: 40px;
+    width: 34px; height: 34px;           /* smaller icons */
     background: var(--green-bg);
-    border-radius: 10px;
+    border-radius: 8px;
     display: grid; place-items: center;
     color: var(--green-icon);
     flex-shrink: 0;
   }
+  .info-icon svg { width: 18px; height: 18px; }
   .info-body { min-width: 0; }
   .info-label {
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted-2);
     font-weight: 600;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
   .info-value {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text);
     font-weight: 700;
-    white-space: normal;      /* allow full location to wrap */
+    white-space: normal;
     word-break: break-word;
   }
 
@@ -232,43 +222,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: clamp(24px, 3vw, 36px);
+    padding: clamp(18px, 2.5vw, 28px);   /* smaller */
     box-shadow: var(--shadow-card);
   }
   .panel + .panel { margin-top: var(--gap); }
   .panel h2 {
-    font-size: clamp(20px, 2.4vw, 24px);
-    margin-bottom: 20px;
+    font-size: clamp(18px, 2vw, 22px);
+    margin-bottom: 16px;
     font-weight: 700;
   }
   .about p {
     color: var(--text-body);
-    margin-bottom: 16px;
-    font-size: 16px;
-    line-height: 1.7;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.6;
   }
   .about h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--text);
-    margin: 24px 0 12px;
+    margin: 20px 0 10px;
   }
   .about ul {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     padding: 0;
     list-style: none;
   }
   .about ul li {
-    padding: 10px 0 10px 24px;
+    padding: 8px 0 8px 20px;
     position: relative;
     color: var(--text-body);
+    font-size: 14px;
   }
   .about ul li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 18px;
-    width: 6px; height: 6px;
+    top: 15px;
+    width: 5px; height: 5px;
     background: var(--orange);
     border-radius: 50%;
   }
@@ -277,18 +268,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
   @media (min-width: 960px) {
     .sidebar {
       position: sticky;
-      top: 24px;
+      top: 20px;
       align-self: start;
-      max-height: calc(100vh - 48px);
+      max-height: calc(100vh - 40px);
       overflow-y: auto;
       scrollbar-width: thin;
     }
-    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar { width: 5px; }
     .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
   }
 
@@ -296,39 +287,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 22px;
+    padding: 16px;                       /* smaller */
     box-shadow: var(--shadow-card);
   }
 
-  /* Tickets card */
   .tickets-label {
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted-2);
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .tickets-price {
-    font-size: 32px;
+    font-size: 28px;                    /* smaller */
     font-weight: 800;
     color: var(--text);
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   .btn-primary {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
     background: var(--orange);
     color: #fff;
     border: none;
-    padding: 16px 22px;
+    padding: 12px 18px;                /* smaller */
     border-radius: var(--radius-pill);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     box-shadow: var(--shadow-button);
     cursor: pointer;
@@ -343,41 +333,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     outline: 3px solid rgba(255, 90, 31, 0.35);
     outline-offset: 2px;
   }
-  .btn-primary svg { transition: transform 160ms ease; }
-  .btn-primary:hover svg { transform: translateX(3px); }
+  .btn-primary svg { width: 16px; height: 16px; transition: transform 160ms ease; }
+  .btn-primary:hover svg { transform: translateX(2px); }
   .secure-line {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 14px;
+    gap: 6px;
+    margin-top: 10px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
   }
 
   /* Organized-by card */
   .org {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
   .org-avatar {
-    width: 44px; height: 44px;
+    width: 36px; height: 36px;
     background: var(--green-avatar);
     color: #fff;
     border-radius: 50%;
     display: grid; place-items: center;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     flex-shrink: 0;
   }
   .org-name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text);
     display: block;
   }
   .org-role {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
   }
 
@@ -385,18 +375,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .trust {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
   .trust-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 14px;
+    gap: 10px;
+    font-size: 13px;
     color: var(--text);
     font-weight: 500;
   }
   .trust-icon {
-    width: 22px; height: 22px;
+    width: 18px; height: 18px;
     flex-shrink: 0;
     color: var(--green-icon);
   }
@@ -420,47 +410,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     z-index: 40;
     background: #fff;
     border-top: 1px solid var(--border);
-    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.06);
   }
-  .mobile-cta-price {
-    flex-shrink: 0;
-    min-width: 0;
-  }
   .mobile-cta-price .lbl {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted-2);
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 4px;
+    font-size: 9px;
+    margin-bottom: 2px;
   }
   .mobile-cta-price .val {
-    display: block;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: 16px;
   }
   .mobile-cta .btn-primary {
-    flex: 1;
-    padding: 14px 18px;
-    font-size: 15px;
+    padding: 12px 16px;
+    font-size: 14px;
   }
   @media (min-width: 960px) {
     .mobile-cta { display: none; }
   }
   @media (max-width: 959px) {
-    body { padding-bottom: 84px; }
+    body { padding-bottom: 78px; }
   }
 
   /* ---------- Modal ---------- */
+  /* Modal remains unchanged; you can resize later if needed */
   .modal-overlay {
     position: fixed; inset: 0;
     background: rgba(15, 23, 42, 0.55);
@@ -493,308 +468,80 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: 12px;
     flex-shrink: 0;
   }
-  .modal-header h2 {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0 0 2px;
-  }
-  .modal-header .subt {
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .modal-header h2 { font-size: 18px; }
+  .modal-header .subt { font-size: 13px; color: var(--muted); }
   .modal-close {
-    background: transparent;
-    border: none;
-    padding: 6px;
-    border-radius: 8px;
-    color: var(--muted);
-    cursor: pointer;
-    line-height: 0;
-    transition: background 160ms, color 160ms;
+    background: transparent; border: none; padding: 6px; border-radius: 8px;
+    color: var(--muted); cursor: pointer; line-height: 0;
   }
-  .modal-close:hover { background: var(--page-bg); color: var(--text); }
-  .modal-close:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
-
   .modal-body {
     padding: 20px 24px 24px;
     overflow-y: auto;
     flex: 1;
-    -webkit-overflow-scrolling: touch;
   }
   .modal-body > section + section {
     margin-top: 24px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
   }
-  .section-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  /* Ticket item */
+  .section-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 12px; display: block; }
   .ticket-item {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
+    border: 1px solid var(--border); border-radius: 12px; padding: 16px;
   }
-  .ticket-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .ticket-info { flex: 1; min-width: 0; }
-  .ticket-info h4 {
-    font-size: 15px;
-    font-weight: 700;
-    margin: 0 0 4px;
-  }
-  .ticket-info p {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0;
-  }
-  .ticket-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .ticket-price {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .qty-stepper {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-pill);
-    padding: 3px;
-    gap: 2px;
-  }
+  .ticket-row { display: flex; justify-content: space-between; gap: 16px; }
+  .ticket-info h4 { font-size: 15px; margin-bottom: 4px; }
+  .ticket-info p { font-size: 13px; color: var(--muted); }
+  .ticket-side { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .ticket-price { font-size: 15px; font-weight: 700; }
+  .qty-stepper { display: inline-flex; align-items: center; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); padding: 3px; gap: 2px; }
   .qty-btn {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    display: grid; place-items: center;
-    transition: background 160ms;
-    line-height: 1;
+    width: 28px; height: 28px; border-radius: 50%; border: none; background: transparent;
+    color: var(--text); font-size: 18px; font-weight: 500; cursor: pointer; display: grid; place-items: center;
   }
-  .qty-btn:hover:not(:disabled) { background: var(--page-bg); }
   .qty-btn:disabled { color: var(--muted-2); cursor: not-allowed; }
-  .qty-val {
-    min-width: 26px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--text);
-  }
-
-  /* Form fields in modal */
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .form-row + .form-row { margin-top: 14px; }
-  @media (min-width: 500px) {
-    .form-row.two { grid-template-columns: 1fr 1fr; }
-  }
-  .modal-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .modal-field label {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 600;
-    line-height: 1.4;
-  }
+  .qty-val { min-width: 26px; text-align: center; font-weight: 700; font-size: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .form-row.two { grid-template-columns: 1fr 1fr; }
+  .modal-field { display: flex; flex-direction: column; gap: 6px; }
+  .modal-field label { font-size: 12px; color: var(--muted); font-weight: 600; }
   .modal-field .req { color: var(--orange); }
-  .modal-field input,
-  .modal-field select {
-    appearance: none;
-    -webkit-appearance: none;
-    border: 1px solid var(--border-strong);
-    background: #fff;
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 15px;
-    color: var(--text);
-    transition: border-color 160ms, box-shadow 160ms;
+  .modal-field input, .modal-field select {
+    appearance: none; border: 1px solid var(--border-strong); border-radius: 10px; padding: 12px 14px; font-size: 15px;
     width: 100%;
-    font-family: inherit;
   }
   .modal-field select {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
   }
-  .modal-field input:focus,
-  .modal-field select:focus {
-    outline: none;
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.15);
-  }
-  .modal-field.has-error input,
-  .modal-field.has-error select { border-color: #B0341F; }
-  .modal-field .error {
-    display: none;
-    font-size: 12px;
-    color: #B0341F;
-  }
+  .modal-field.has-error input, .modal-field.has-error select { border-color: #B0341F; }
+  .modal-field .error { display: none; font-size: 12px; color: #B0341F; }
   .modal-field.has-error .error { display: block; }
-  .modal-field .opt {
-    color: var(--muted-2);
-    font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    margin-left: 2px;
-  }
-
-  .field-legend {
-    font-size: 13px;
-    color: var(--text);
-    font-weight: 600;
-    line-height: 1.4;
-    padding: 0;
-    margin-bottom: 10px;
-    display: block;
-  }
-  .field-legend .req { color: var(--orange); }
-
-  .choice-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+  .field-legend { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; display: block; }
+  .choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .choice {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 16px;
-    border: 1px solid var(--border-strong);
-    border-radius: 12px;
-    background: #fff;
-    cursor: pointer;
-    transition: border-color 160ms, background 160ms, box-shadow 160ms;
-    user-select: none;
+    position: relative; display: flex; align-items: center; gap: 10px; padding: 14px 16px;
+    border: 1px solid var(--border-strong); border-radius: 12px; background: #fff; cursor: pointer; transition: border-color 160ms;
   }
-  .choice input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
+  .choice input { position: absolute; opacity: 0; pointer-events: none; }
   .choice-radio {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1.5px solid var(--muted-2);
-    background: #fff;
-    flex-shrink: 0;
-    transition: border-color 160ms, background 160ms, box-shadow 160ms;
+    width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--muted-2);
+    background: #fff; flex-shrink: 0; transition: border-color 160ms, background 160ms;
   }
-  .choice-lbl {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .choice:hover { border-color: var(--muted-2); }
-  .choice.is-checked {
-    border-color: var(--orange);
-    background: rgba(255, 90, 31, 0.05);
-    box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
-  }
-  .choice.is-checked .choice-radio {
-    border-color: var(--orange);
-    background: var(--orange);
-    box-shadow: inset 0 0 0 3px #fff;
-  }
-  .choice input:focus-visible ~ .choice-radio {
-    box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.28);
-  }
-  .modal-field.has-error .choice { border-color: #B0341F; }
-
-  .shuttle-city {
-    animation: revealDown 220ms ease-out;
-  }
-  @keyframes revealDown {
-    from { opacity: 0; transform: translateY(-4px); }
-    to   { opacity: 1; transform: none; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .shuttle-city { animation: none; }
-  }
-
+  .choice.is-checked { border-color: var(--orange); background: rgba(255,90,31,0.05); }
+  .choice.is-checked .choice-radio { border-color: var(--orange); background: var(--orange); box-shadow: inset 0 0 0 3px #fff; }
+  .shuttle-city { animation: revealDown 220ms ease-out; }
+  @keyframes revealDown { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
   .modal-footer {
-    border-top: 1px solid var(--border);
-    padding: 16px 24px 20px;
-    background: #fff;
-    flex-shrink: 0;
+    border-top: 1px solid var(--border); padding: 16px 24px 20px; background: #fff; flex-shrink: 0;
   }
-  .summary-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 8px;
-    gap: 12px;
-  }
-  .summary-line span:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .total-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-    margin-bottom: 14px;
-  }
-  .modal-footer .btn-primary {
-    width: 100%;
-  }
-  .footer-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin: 10px 0 0;
-  }
-
-  @media (max-width: 559px) {
-    .modal-overlay {
-      align-items: flex-end;
-      padding: 0;
-    }
-    .modal-card {
-      max-height: 94vh;
-      border-radius: 18px 18px 0 0;
-    }
-  }
+  .summary-line { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+  .total-line { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; color: var(--text); padding-top: 12px; border-top: 1px solid var(--border); margin-bottom: 14px; }
+  .footer-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
 
   body.modal-open { overflow: hidden; }
   body.modal-open .mobile-cta { display: none; }
 
-  /* ---------- Success view ---------- */
+  /* Success view – with hidden override */
   .success-view {
     padding: 36px 24px 28px;
     text-align: center;
@@ -804,100 +551,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     flex-direction: column;
     align-items: center;
   }
-  /* 🔧 Fix: override display:flex when hidden attribute is present */
   .success-view[hidden] {
     display: none !important;
   }
   .success-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: #E8F7EE;
-    color: var(--green-icon-dark);
-    display: grid;
-    place-items: center;
-    margin-bottom: 22px;
+    width: 72px; height: 72px; border-radius: 50%; background: #E8F7EE; color: var(--green-icon-dark);
+    display: grid; place-items: center; margin-bottom: 22px;
     animation: successPop 460ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  @keyframes successPop {
-    from { transform: scale(0.4); opacity: 0; }
-    to   { transform: scale(1);   opacity: 1; }
-  }
-  .success-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    margin: 0 0 8px;
-    line-height: 1.2;
-  }
-  .success-sub {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0 0 24px;
-    max-width: 420px;
-    line-height: 1.55;
-  }
-  .success-sub strong { color: var(--text); font-weight: 600; }
+  @keyframes successPop { from { transform: scale(0.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-title { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+  .success-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; max-width: 420px; }
   .success-details {
-    background: var(--page-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 18px;
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: 20px;
-    text-align: left;
+    background: var(--page-bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px;
+    width: 100%; max-width: 420px; margin-bottom: 20px; text-align: left;
   }
-  .success-detail-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 14px;
-    padding: 6px 0;
-  }
-  .success-detail-row + .success-detail-row {
-    border-top: 1px solid var(--border);
-  }
+  .success-detail-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; }
+  .success-detail-row + .success-detail-row { border-top: 1px solid var(--border); }
   .success-detail-row .lbl { color: var(--muted); }
-  .success-detail-row .val {
-    color: var(--text);
-    font-weight: 600;
-    text-align: right;
-  }
-  .success-actions {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    max-width: 420px;
-  }
-  .success-actions > * { flex: 1; }
+  .success-detail-row .val { color: var(--text); font-weight: 600; }
+  .success-actions { display: flex; gap: 10px; width: 100%; max-width: 420px; }
   .btn-secondary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #fff;
-    color: var(--text);
-    border: 1px solid var(--border-strong);
-    padding: 14px 18px;
-    border-radius: var(--radius-pill);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 160ms, border-color 160ms;
-    font-family: inherit;
+    display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff;
+    color: var(--text); border: 1px solid var(--border-strong); padding: 14px 18px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; cursor: pointer;
   }
-  .btn-secondary:hover {
-    background: var(--page-bg);
-    border-color: var(--muted-2);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .success-icon { animation: none; }
-  }
-  @media (max-width: 420px) {
-    .success-actions { flex-direction: column; }
-  }
+  @media (prefers-reduced-motion: reduce) { .success-icon { animation: none; } }
+  @media (max-width: 420px) { .success-actions { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -927,10 +607,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="grid">
     <main>
+
       <span class="event-tag">Jul 18, 2026 • 16:00</span>
       <h1 class="event-title">Next Level Prayers Conference Canada</h1>
       <span class="event-loc">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
           <circle cx="12" cy="10" r="3"/>
         </svg>
@@ -940,7 +621,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="info-row" role="list">
         <div class="info-card" role="listitem">
           <div class="info-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/>
               <line x1="8" y1="2" x2="8" y2="6"/>
@@ -955,7 +636,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="info-card" role="listitem">
           <div class="info-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
               <polyline points="12 6 12 12 16 14"/>
             </svg>
@@ -968,7 +649,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="info-card" role="listitem">
           <div class="info-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
@@ -984,31 +665,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 id="aboutHeading">About this event</h2>
         <p>The Next Level Prayers (NLP) Conference Toronto, Canada 2026 is a powerful gathering designed to ignite spiritual transformation and unlock divine breakthroughs.</p>
         <p><strong>Venue:</strong> The International Center, Toronto</p>
+
         <h3>Registration Details</h3>
         <p>Please register to attend and stay updated as event information unfolds. There are two registration options:</p>
         <ul>
           <li><strong>Attend Only</strong> — Single or Group Ticket</li>
           <li><strong>Attend &amp; Volunteer</strong> — Single or Group Ticket (for those who wish to serve while attending)</li>
         </ul>
+
         <h3>Important Notes</h3>
         <p>This is an RSVP-only event — registration indicates your intent to attend.</p>
         <p>Expect follow-up communications via email, SMS, and phone.</p>
       </section>
+
     </main>
 
     <aside class="sidebar" aria-label="Ticket and organizer information">
+
       <div class="side-card">
         <div class="tickets-label">Tickets starting at</div>
         <div class="tickets-price">Free</div>
         <a href="#reserve" class="btn-primary" id="ticketBtn">
           <span>Get Your Tickets</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
         <div class="secure-line">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
           Secure checkout. Tickets emailed instantly.
@@ -1016,7 +701,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="side-card">
-        <div class="tickets-label" style="margin-bottom: 12px;">Organized by</div>
+        <div class="tickets-label" style="margin-bottom: 10px;">Organized by</div>
         <div class="org">
           <div class="org-avatar" aria-hidden="true">N</div>
           <div>
@@ -1053,7 +738,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
+
     </aside>
+
   </div>
 </div>
 
@@ -1074,6 +761,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <form id="modalForm" novalidate style="display:flex; flex-direction:column; overflow:hidden; flex:1;">
       <div class="modal-body">
+
         <section>
           <span class="section-title">Select tickets</span>
           <div class="ticket-item">
@@ -1180,6 +868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="error">Pick your closest city</span>
           </div>
         </section>
+
       </div>
 
       <div class="modal-footer">
@@ -1245,15 +934,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   'use strict';
 
-  var OFFICIAL_GUESTLINK_URL = 'https://guestlink.example.com/nlp-canada-2026';
+  // ---------- REPLACE WITH YOUR GOOGLE APPS SCRIPT URL ----------
+  var BACKEND_ENDPOINT = '';  // 👈 PUT YOUR WEB APP URL HERE
 
   var modal      = document.getElementById('ticketModal');
   var modalClose = document.getElementById('modalClose');
   var lastFocused = null;
 
   function openModal() {
-    // Force reset to form view every time the modal opens
-    resetModal();
+    resetModal();                       // always start fresh
     lastFocused = document.activeElement;
     modal.removeAttribute('hidden');
     modal.classList.add('is-open');
@@ -1268,35 +957,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.setAttribute('hidden', '');
     document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    // Reset again to be safe (openModal already does it, but this ensures clean state after close)
     resetModal();
   }
 
   modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
 
-  function handleTicketClick(e) {
-    e.preventDefault();
-    openModal();
-  }
-  var btn       = document.getElementById('ticketBtn');
-  var btnMobile = document.getElementById('ticketBtnMobile');
-  if (btn)       btn.addEventListener('click', handleTicketClick);
-  if (btnMobile) btnMobile.addEventListener('click', handleTicketClick);
+  function handleTicketClick(e) { e.preventDefault(); openModal(); }
+  document.getElementById('ticketBtn').addEventListener('click', handleTicketClick);
+  document.getElementById('ticketBtnMobile').addEventListener('click', handleTicketClick);
 
-  var qty        = 1;
-  var qtyMin     = 1;
-  var qtyMax     = 10;
-  var qtyValEl   = document.getElementById('qtyVal');
-  var qtyMinusEl = document.getElementById('qtyMinus');
-  var qtyPlusEl  = document.getElementById('qtyPlus');
-  var summaryLbl = document.getElementById('summaryLbl');
-  var submitLbl  = document.getElementById('submitLbl');
+  /* ---------- Quantity stepper ---------- */
+  var qty = 1, qtyMin = 1, qtyMax = 10;
+  var qtyValEl = document.getElementById('qtyVal'), qtyMinusEl = document.getElementById('qtyMinus'), qtyPlusEl = document.getElementById('qtyPlus');
+  var summaryLbl = document.getElementById('summaryLbl'), submitLbl = document.getElementById('submitLbl');
 
   function updateQty() {
     qtyValEl.textContent = qty;
@@ -1306,9 +983,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitLbl.textContent  = 'Get ' + qty + ' Free Ticket' + (qty > 1 ? 's' : '');
   }
   qtyMinusEl.addEventListener('click', function () { if (qty > qtyMin) { qty--; updateQty(); } });
-  qtyPlusEl .addEventListener('click', function () { if (qty < qtyMax) { qty++; updateQty(); } });
+  qtyPlusEl.addEventListener('click',  function () { if (qty < qtyMax) { qty++; updateQty(); } });
   updateQty();
 
+  /* ---------- Shuttle choice ---------- */
   var shuttleRadios    = document.querySelectorAll('input[name="shuttleChoice"]');
   var shuttleFs        = document.querySelector('.shuttle-fs');
   var shuttleCityField = document.getElementById('shuttleCityField');
@@ -1329,14 +1007,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
+  /* ---------- Form submission ---------- */
   var form = document.getElementById('modalForm');
-
   function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var ok = true;
-    var firstInvalid = null;
+    var ok = true, firstInvalid = null;
 
     var checks = [
       { id: 'mFirstName', valid: function (v) { return v.trim().length > 0; } },
@@ -1348,9 +1025,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     checks.forEach(function (c) {
       var el = document.getElementById(c.id);
       var fieldEl = el.closest('.modal-field');
-      var isValid = c.valid(el.value);
-      fieldEl.classList.toggle('has-error', !isValid);
-      if (!isValid) { ok = false; if (!firstInvalid) firstInvalid = el; }
+      var valid = c.valid(el.value);
+      fieldEl.classList.toggle('has-error', !valid);
+      if (!valid) { ok = false; if (!firstInvalid) firstInvalid = el; }
     });
 
     var shuttleChecked = form.querySelector('input[name="shuttleChoice"]:checked');
@@ -1366,6 +1043,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     var wantsShuttle = shuttleChecked.value === 'yes';
     var payload = {
+      event_id: 'nlp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),  // unique ID
       qty: qty,
       firstName: document.getElementById('mFirstName').value.trim(),
       lastName:  document.getElementById('mLastName').value.trim(),
@@ -1381,13 +1059,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitBtn.disabled = true;
     submitLbl.textContent = 'Processing…';
 
-    var BACKEND_ENDPOINT = '';
-
     function completeSuccess() {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'ticket_reserved',
-        event_id: 'nlp-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+        event_id: payload.event_id,
         ticket_qty: payload.qty,
         shuttle_wanted: payload.shuttleWanted,
         shuttle_city: payload.shuttlePickupCity || null,
@@ -1404,8 +1080,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     if (BACKEND_ENDPOINT) {
-      fetch(BACKEND_ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        .then(completeSuccess).catch(completeFailure);
+      fetch(BACKEND_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(completeSuccess)
+        .catch(completeFailure);
     } else {
       console.log('[NLP Canada 2026 · Modal] Payload:', payload);
       setTimeout(completeSuccess, 500);
@@ -1426,7 +1108,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function resetModal() {
     var f = document.getElementById('modalForm');
     var s = document.getElementById('successView');
-    // Only reset if we are not already in form state (both hidden? that shouldn't happen)
     if (f.hidden && s.hidden) return;
     f.hidden = false;
     s.hidden = true;
@@ -1434,51 +1115,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var subt = document.querySelector('.modal-header .subt');
     if (subt) subt.textContent = 'Next Level Prayers Conference Canada';
     f.reset();
-    qty = 1;
-    updateQty();
+    qty = 1; updateQty();
     document.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('is-checked'); });
     shuttleCityField.hidden = true;
     var submitBtn = document.getElementById('submitBtn');
     if (submitBtn) submitBtn.disabled = false;
   }
 
+  /* Calendar download */
   document.getElementById('calendarBtn').addEventListener('click', function () {
     var ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Next Level Prayers//NLP Canada 2026//EN',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Next Level Prayers//NLP Canada 2026//EN',
+      'CALSCALE:GREGORIAN','METHOD:PUBLISH',
       'BEGIN:VEVENT',
       'UID:nlp-canada-2026@nextlevelprayers.org',
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]|\.\d{3}/g, ''),
-      'DTSTART:20260718T200000Z',
-      'DTEND:20260719T020000Z',
+      'DTSTART:20260718T200000Z','DTEND:20260719T020000Z',
       'SUMMARY:Next Level Prayers Conference Canada 2026',
       'LOCATION:The International Centre\\, Mississauga\\, Ontario',
       'DESCRIPTION:A worship\\, prayer and miracles conference by Next Level Prayers.',
-      'END:VEVENT',
-      'END:VCALENDAR'
+      'END:VEVENT','END:VCALENDAR'
     ].join('\r\n');
     var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
     var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'next-level-prayers-canada-2026.ics';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    var a = document.createElement('a'); a.href = url; a.download = 'next-level-prayers-canada-2026.ics';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 200);
   });
 
   document.getElementById('doneBtn').addEventListener('click', closeModal);
 
+  // Clear errors on input
   form.querySelectorAll('input, select').forEach(function (el) {
-    var clear = function () {
-      var f = el.closest('.modal-field');
-      if (f) f.classList.remove('has-error');
-    };
-    el.addEventListener('input',  clear);
+    var clear = function () { var f = el.closest('.modal-field'); if (f) f.classList.remove('has-error'); };
+    el.addEventListener('input', clear);
     el.addEventListener('change', clear);
   });
 })();
